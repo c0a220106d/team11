@@ -5,3 +5,4 @@ for val in mylist:
     count += 1
 else:
     print("要素の数 = " + str(count))
+    print("hello")
