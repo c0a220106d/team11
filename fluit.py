@@ -1,5 +1,5 @@
 count = 0
-mylist = ["Orange", "Peach", "Lemon", "Apple", "Grape", "Pineapple"]
+mylist = ["Orange", "Peach", "Lemon", "Apple", "Grape", "Pineapple","kiwi"]
 for val in mylist:
     print("value:" + val)
     count += 1
