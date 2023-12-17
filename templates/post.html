@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>　
-        <meta charset="utf-8">　
-        <title>サイトタイトル</title>　
-        <link rel="stylesheet" href="sample.css">
-    </head>
-    <body>　
-        <header>ヘッダー</header>　
-        <nav>ナビ</nav>　
-        <article>　
-            <h1>タイトル</h1>　　
-            <section>　　
-                <h2>タイトル</h2>　　
-                <p>コンテンツの内容</p>　　
-            </section>　
-        </article>
-        <footer>フッター</footer>
-    </body>
+    
+    <form action="POST">
+        <p>日付：<input type="date" name="post_date"></p>
+        <input class="form-control" name="user" type="text" placeholder="名前(全角20文字以内)" aria-label="default input example">
+        <input class="form-control" name="title" type="text" placeholder="タイトル(全角30文字以内)" aria-label="default input example">
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">投稿内容</label>
+            <textarea class="form-control"  name="detail" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+       <button href="/" type="button" class="btn btn-outline-success">戻る</button>
+       <button type="submit" class="btn btn-success">投稿する</button>
+    </form>
 </html>
