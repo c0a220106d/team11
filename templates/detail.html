@@ -1,0 +1,39 @@
+<!-- detail.html -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- head部分は省略 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+    
+    <h1>地域掲示板 - 詳細</h1>
+
+    <section>
+        <h2>投稿詳細</h2>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row">日付</th>
+                    <td>{{ post['日付'] }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">名前</th>
+                    <td>{{ post['名前'] }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">タイトル</th>
+                    <td>{{ post['タイトル'] }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">投稿内容</th>
+                    <td>{{ post['投稿内容'] }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="{{ url_for('index') }}">戻る</a></p>
+    </section>
+
+</body>
+</html>

@@ -37,6 +37,19 @@ def accept_form():
     # 任意の処理が終わったらaccept.htmlにリダイレクト
     return redirect(url_for('index'))
 
+###
+@app.route('/detail/<int:post_id>')
+def detail(post_id):
+    # 投稿IDがpost_idの詳細情報を取得
+    data = read_csv()
+    if 1 <= post_id <= len(data):
+        post = data[post_id - 1]
+        return render_template('detail.html', post=post)
+    else:
+        return redirect(url_for('index'))
+###
+
+
 def save_to_csv(post_date, user, title, detail):
     # CSVファイルへのパスを指定
     csv_file_path = 'data.csv'

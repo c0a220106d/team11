@@ -21,6 +21,7 @@
                     <th scope="col">名前</th>
                     <th scope="col">タイトル</th>
                     <th scope="col">投稿内容</th>
+                    <th scope="col">詳細</th> <!-- 追加 -->
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +32,9 @@
                         <td>{{ entry['タイトル'] }}</td>
                         <td>
                             <div style="white-space: pre-wrap;">{{ entry['投稿内容'] }}</div>
+                        </td>
+                        <td>
+                            <a href="{{ url_for('detail', post_id=loop.index) }}">詳細</a> <!-- 追加 -->
                         </td>
                     </tr>
                 {% endfor %}
