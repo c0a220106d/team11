@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template, request, redirect, url_for
+import csv
 
 app = Flask(__name__)
 
@@ -26,20 +27,27 @@ def accept_form():
     print('タイトル:', title)
     print('投稿内容:', detail)
 
+    # データをCSVファイルに保存
+    save_to_csv(post_date, user, title, detail)
+
     # 任意の処理が終わったらaccept.htmlにリダイレクト
     return redirect(url_for('index'))
 
-# @app.route('/post', methods=['POST'])
-# def post():
-#     data = request.json  # JSONデータを受け取る場合
-#     # または
-#     # data = request.form  # フォームデータを受け取る場合
+def save_to_csv(post_date, user, title, detail):
+    # CSVファイルへのパスを指定
+    csv_file_path = 'data.csv'
 
-#     # 受け取ったデータを処理する
+    # ヘッダーが存在しない場合は新しくファイルを作成し、ヘッダーを書き込む
+    with open(csv_file_path, 'a', newline='', encoding='utf_8_sig') as csvfile:
+        fieldnames = ['日付', '名前', 'タイトル', '投稿内容']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-#     response_data = {'message': 'Item created successfully'}
-#     print(response_data)
-#     return jsonify(response_data), 201  # 201は作成成功のステータスコード
+        if csvfile.tell() == 0:
+            writer.writeheader()
+
+        # データをCSVファイルに書き込む
+        writer.writerow({'日付': post_date, '名前': user, 'タイトル': title, '投稿内容': detail})
+
 
 if __name__ == '__main__':
     app.debug = True
