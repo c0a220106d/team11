@@ -10,7 +10,37 @@
     
     <h1>地域掲示板</h1>
     <p>USERページ</p>
-    <a href="{{ url_for('post') }}">投稿機能</a> <!-- views.pyのindex
+    <a href="{{ url_for('post') }}">投稿機能</a> <!-- views.pyのindex -->
+    
+    <section>
+        <h2>投稿一覧</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">日付</th>
+                    <th scope="col">名前</th>
+                    <th scope="col">タイトル</th>
+                    <th scope="col">投稿内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in data %}
+                    <tr>
+                        <td>{{ entry['日付'] }}</td>
+                        <td>{{ entry['名前'] }}</td>
+                        <td>{{ entry['タイトル'] }}</td>
+                        <td>
+                            <div style="white-space: pre-wrap;">{{ entry['投稿内容'] }}</div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>
+
+<!---
     <section>
         
     </section>

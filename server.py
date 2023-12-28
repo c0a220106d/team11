@@ -7,7 +7,11 @@ app = Flask(__name__)
 
 @app.route('/',methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    ###
+    data= read_csv()
+    return render_template('index.html', data=data)
+    ###
+    # return render_template('index.html')
 
 @app.route('/post')
 def post():
@@ -47,6 +51,21 @@ def save_to_csv(post_date, user, title, detail):
 
         # データをCSVファイルに書き込む
         writer.writerow({'日付': post_date, '名前': user, 'タイトル': title, '投稿内容': detail})
+
+def read_csv():
+    # CSVファイルからデータを読み込む
+    csv_file_path = 'data.csv'
+    data = []
+
+    try:
+        with open(csv_file_path, 'r', newline='', encoding='utf_8_sig') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                data.append(row)
+    except FileNotFoundError:
+        pass
+
+    return data
 
 
 if __name__ == '__main__':
